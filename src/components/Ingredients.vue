@@ -4,7 +4,7 @@
     </section> 
     <section>
         <input type="text" v-model="data.newIngredient.name" placeholder="Title" />
-        <button @click="add(data.newIngredient.name)" @disabled="!data.newIngredient.name">Add</button>
+        <button @click="add(data.newIngredient.name)" :disabled="!data.newIngredient.name">Add</button>
     </section>
     <section>
         <template v-if="!data.ingredients.length">  
@@ -43,7 +43,7 @@ export default {
         const data = reactive({
             ingredients: store.ingredients,
             filter: "",
-            newIngredient: { name: "" }
+            newIngredient: { name: "" },
         })
         const filteredIngredients = computed(() => 
             data.ingredients
