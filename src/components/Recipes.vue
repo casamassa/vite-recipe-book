@@ -1,6 +1,6 @@
 <template>
     <section>
-        <input type="text" v-model="data.filter" placeholder="Type something to filter the list" />
+        <input type="text" v-model="data.filter" placeholder="Type something to filter the list..." />
     </section>
     <section>
         <input type="text" v-model="data.newRecipe.name" placeholder="Name" />
@@ -52,7 +52,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="recipe in data.recipes" :key="recipe.id">
+                    <tr v-for="recipe in filteredRecipes" :key="recipe.id">
                         <td>{{recipe.id}}</td>
                         <td>{{recipe.name}}</td>
                         <td>
@@ -104,9 +104,8 @@ export default {
             viewRecipe: {}
         })
         const filteredRecipes = computed(() =>
-            data.recipes.filter(
-                recipe => !data.filter || JSON.stringify(recipe).includes(data.filter)
-            )
+            data.recipes
+                .filter(recipe => !data.filter || recipe.name.includes(data.filter))
         )
         const add = recipe => {
             store.addRecipe(recipe)

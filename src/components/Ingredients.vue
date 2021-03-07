@@ -1,6 +1,6 @@
 <template>
     <section>
-        <input type="text" v-model="data.filter" placeholder="Type sometihing to filter the list..." />
+        <input type="text" v-model="data.filter" placeholder="Type something to filter the list..." />
     </section> 
     <section>
         <input type="text" v-model="data.newIngredient" placeholder="Title" />
